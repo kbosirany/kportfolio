@@ -1,0 +1,24 @@
+---
+import { loc, traduire, type Langue } from '../lib/i18n';
+import { urlDepot, type Projet } from '../lib/donnees';
+
+interface Props { projet: Projet; lang: Langue }
+const { projet, lang } = Astro.props;
+const t = (cle: string) => traduire(lang, cle);
+const description = loc(projet, 'description', lang);
+---
+<article class="carte flex flex-col gap-3">
+  <h3 class="font-code text-base font-normal text-accent">{projet.depot}</h3>
+  {description && <p class="text-sm text-encre">{description}</p>}
+  <div class="mt-auto flex flex-wrap items-center gap-3 pt-2 text-sm">
+    {projet.langage && <span class="puce">{projet.langage}</span>}
+    <a href={urlDepot(projet)} class="text-accent hover:underline">
+      {t('projets.depot')} ↗
+    </a>
+    {projet.site && (
+      <a href={projet.site} class="text-accent hover:underline">
+        {t('projets.site')} ↗
+      </a>
+    )}
+  </div>
+</article>

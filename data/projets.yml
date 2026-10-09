@@ -1,0 +1,74 @@
+# Catalogue des projets, rangés par catégorie.
+# Pour ajouter un projet : une entrée dans `projets`, avec une `categorie`
+# qui existe dans `categories`. `depot` est le nom du dépôt sur GitHub.
+# Les descriptions vides sont à compléter ; ajouter `_en` et `_mg` au besoin.
+categories:
+  - id: paquets-r
+    nom: Paquets R
+    nom_en: R packages
+    nom_mg: Fonosana R
+    description: Outils réutilisables pour l'analyse, les graphiques et les rapports.
+    description_en: Reusable tools for analysis, graphics and reports.
+  - id: sites
+    nom: Sites et tableaux de bord
+    nom_en: Websites and dashboards
+    nom_mg: Tranokala sy tabilao
+    description: Sites statiques et tableaux de bord mis à jour automatiquement.
+    description_en: Static sites and automatically updated dashboards.
+  - id: cv
+    nom: CV et documents
+    nom_en: CVs and documents
+    nom_mg: CV sy antontan-taratasy
+    description: Documents générés à partir de données structurées.
+    description_en: Documents generated from structured data.
+  - id: python
+    nom: Python et outils
+    nom_en: Python and tools
+    nom_mg: Python sy fitaovana
+    description: Scripts et petits outils en ligne de commande.
+    description_en: Scripts and small command-line tools.
+
+projets:
+  # --- Paquets R ---
+  - { depot: kquarto.r, categorie: paquets-r, langage: R,
+      site: "https://kbosirany.github.io/kquarto.r/",
+      description: "Créer, modéliser et générer des livres Quarto depuis R.",
+      description_en: "Create, template and render Quarto books from R." }
+  - { depot: kquarto.r.inrae, categorie: paquets-r, langage: R,
+      site: "https://kbosirany.github.io/kquarto.r.inrae/",
+      description: "Modèles de livres Quarto suivant la charte graphique INRAE.",
+      description_en: "Quarto book templates following the INRAE graphic charter." }
+  - { depot: kggplot, categorie: paquets-r, langage: R,
+      site: "https://kbosirany.github.io/kggplot/" }
+  - { depot: kleaflet.r, categorie: paquets-r, langage: R,
+      site: "https://kbosirany.github.io/kleaflet.r/" }
+  - { depot: kplot, categorie: paquets-r, langage: R }
+  - { depot: kpkg.r, categorie: paquets-r, langage: R }
+  - { depot: kreport.r, categorie: paquets-r, langage: R }
+  - { depot: kutils, categorie: paquets-r, langage: R }
+  - { depot: kread, categorie: paquets-r, langage: R }
+  - { depot: kmetadata, categorie: paquets-r, langage: R }
+  - { depot: kcloud, categorie: paquets-r, langage: R }
+  # --- Sites et tableaux de bord ---
+  - { depot: kflight, categorie: sites, langage: R,
+      site: "https://kbosirany.github.io/kflight/",
+      description: "Suivi quotidien des prix de vols, publié sur GitHub Pages.",
+      description_en: "Daily flight price tracking, published on GitHub Pages." }
+  # --- CV et documents ---
+  - { depot: kcv, categorie: cv, langage: TeX,
+      description: "CV en LaTeX.",
+      description_en: "LaTeX résumé." }
+  - { depot: kcv.mum, categorie: cv, langage: TeX,
+      description: "CV LaTeX organisé par contenu, modèle et orientation.",
+      description_en: "LaTeX résumé organised by content, layout and focus." }
+  - { depot: kcv2, categorie: cv, langage: Python,
+      description: "Génération de CV (PDF et site) à partir de données YAML.",
+      description_en: "Résumé generation (PDF and site) from YAML data." }
+  # --- Python et outils ---
+  - { depot: py-ktranscript, categorie: python, langage: Python,
+      description: "Transcription de fichiers audio avec Whisper.",
+      description_en: "Transcribe audio files using Whisper." }
+  - { depot: py-kwapor, categorie: python, langage: Python }
+  - { depot: py-khsl, categorie: python, langage: Python }
+  - { depot: py_watools, categorie: python, langage: Python }
+  - { depot: HSL_Solver, categorie: python }

@@ -1,0 +1,11 @@
+---
+import Accueil from '../../vues/Accueil.astro';
+import { type Langue } from '../../lib/i18n';
+
+export const getStaticPaths = () => [
+  { params: { lang: 'en' } },
+  { params: { lang: 'mg' } },
+];
+const { lang } = Astro.params;
+---
+<Accueil lang={lang as Langue} />

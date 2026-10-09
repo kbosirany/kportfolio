@@ -1,0 +1,21 @@
+# Une rubrique = un groupe de compétences. Ajouter librement.
+- id: modelisation
+  nom: Modélisation
+  nom_en: Modelling
+  nom_mg: Modely
+  items: [Hydrologie, Agronomie, Irrigation, Bilan hydrique]
+- id: donnees
+  nom: Données et code
+  nom_en: Data and code
+  nom_mg: Angona sy kaody
+  items: [R, Python, SQL, Git, GitHub Actions]
+- id: restitution
+  nom: Restitution
+  nom_en: Reporting
+  nom_mg: Fampitana
+  items: [Quarto, R Markdown, LaTeX, Shiny, Leaflet, Astro]
+- id: langues
+  nom: Langues
+  nom_en: Languages
+  nom_mg: Fiteny
+  items: [Français, English, Malagasy]

@@ -1,0 +1,11 @@
+---
+import CV from '../../vues/CV.astro';
+import { type Langue } from '../../lib/i18n';
+
+export const getStaticPaths = () => [
+  { params: { lang: 'en' } },
+  { params: { lang: 'mg' } },
+];
+const { lang } = Astro.params;
+---
+<CV lang={lang as Langue} />

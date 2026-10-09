@@ -1,0 +1,16 @@
+# Les CV sont produits dans le dépôt kcv (LaTeX). Déposer ici les PDF à jour
+# dans public/cv/ puis les lister. Un CV sans fichier est affiché « bientôt ».
+source: https://github.com/kbosirany/kcv
+cv:
+  - id: principal
+    titre: CV
+    titre_en: Résumé
+    langue: fr
+    fichier: cv/cv-fr.pdf
+    maj: "2026-10"
+  - id: principal-en
+    titre: CV (anglais)
+    titre_en: Résumé (English)
+    langue: en
+    fichier: cv/cv-en.pdf
+    maj: "2026-10"

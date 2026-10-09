@@ -1,0 +1,44 @@
+---
+import Base from '../layouts/Base.astro';
+import CarteProjet from '../components/CarteProjet.astro';
+import { profil, projets, categories } from '../lib/donnees';
+import { loc, chemin, traduire, type Langue } from '../lib/i18n';
+
+interface Props { lang: Langue }
+const { lang } = Astro.props;
+const t = (cle: string) => traduire(lang, cle);
+const mis_en_avant = projets.filter((p) => p.site).slice(0, 3);
+---
+<Base lang={lang}>
+  <section class="mx-auto max-w-5xl px-6 py-20">
+    <p class="etiquette">{profil.ville}</p>
+    <h1 class="mt-3 text-5xl md:text-7xl text-accent">{profil.nom}</h1>
+    <div class="ornement">&lt;/&gt;</div>
+    <p class="text-xl text-encre">{loc(profil, 'titre', lang)}</p>
+    <p class="mt-1 text-doux">{loc(profil, 'poste', lang)}</p>
+    <p class="mt-6 max-w-2xl text-lg">{loc(profil, 'presentation', lang)}</p>
+    <div class="mt-8 flex flex-wrap gap-4">
+      <a class="bouton" href={chemin(lang, '/projets/')}>
+        {t('accueil.projetsLien')}
+      </a>
+      <a class="bouton-clair" href={chemin(lang, '/cv/')}>
+        {t('accueil.cvTitre')}
+      </a>
+      <a class="bouton-clair" href={`https://github.com/${profil.github}`}>
+        {t('accueil.github')} ↗
+      </a>
+    </div>
+  </section>
+
+  <section class="bg-fond-doux py-16">
+    <div class="mx-auto max-w-5xl px-6">
+      <h2 class="titre-section">{t('accueil.projetsTitre')}</h2>
+      <div class="mt-8 grid gap-5 md:grid-cols-3">
+        {mis_en_avant.map((p) => <CarteProjet projet={p} lang={lang} />)}
+      </div>
+      <p class="mt-6 text-sm text-doux">
+        {categories.map((c) => loc(c, 'nom', lang)).join(' · ')}
+      </p>
+    </div>
+  </section>
+</Base>

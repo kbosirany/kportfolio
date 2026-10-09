@@ -1,0 +1,9 @@
+# Voir le site en local sans installer Node :
+# `docker compose up` puis http://localhost:4321/kportfolio/
+services:
+  site:
+    image: node:22
+    working_dir: /app
+    volumes: [".:/app"]
+    ports: ["4321:4321"]
+    command: sh -c "npm ci && npm run dev -- --host 0.0.0.0"

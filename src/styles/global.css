@@ -1,0 +1,56 @@
+@import 'tailwindcss';
+
+/* Même palette que kwedding : blanc, émeraude profond, or. */
+@theme {
+  --color-fond: #ffffff;
+  --color-fond-doux: #f3f7f5;
+  --color-encre: #12201b;
+  --color-doux: #5a6a63;
+  --color-accent: #0b4a3a;
+  --color-accent-fonce: #06322a;
+  --color-accent-clair: #e3eee9;
+  --color-or: #c29d4b;
+  --color-ligne: #e1e8e4;
+
+  --font-titre: 'Cormorant Garamond', Georgia, serif;
+  --font-texte: 'Jost', system-ui, sans-serif;
+  --font-code: 'JetBrains Mono', ui-monospace, monospace;
+}
+
+@layer base {
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--color-fond);
+    color: var(--color-encre);
+    font-family: var(--font-texte);
+    font-weight: 300;
+  }
+  h1, h2, h3 { font-family: var(--font-titre); font-weight: 500; }
+  a { @apply transition-colors; }
+}
+
+@layer components {
+  .titre-section { @apply text-4xl md:text-5xl text-encre; }
+  .ornement {
+    @apply my-6 flex items-center gap-3 font-code text-sm text-or;
+  }
+  .ornement::after { content: ''; @apply h-px w-16 bg-or/60; }
+  .etiquette {
+    @apply font-code text-xs uppercase tracking-[0.15em] text-or;
+  }
+  .bouton {
+    @apply inline-block rounded-full bg-accent px-7 py-3 text-sm uppercase
+      tracking-[0.2em] text-white hover:bg-accent-fonce;
+  }
+  .bouton-clair {
+    @apply inline-block rounded-full border border-accent px-7 py-3 text-sm
+      uppercase tracking-[0.2em] text-accent hover:bg-accent hover:text-white;
+  }
+  .carte {
+    @apply rounded-2xl border border-ligne bg-white p-6 shadow-sm;
+  }
+  .puce {
+    @apply rounded-full bg-accent-clair px-3 py-1 font-code text-xs
+      text-accent;
+  }
+}

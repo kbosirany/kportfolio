@@ -1,0 +1,40 @@
+---
+import Base from '../layouts/Base.astro';
+import CarteProjet from '../components/CarteProjet.astro';
+import { categories, projetsDe } from '../lib/donnees';
+import { loc, traduire, type Langue } from '../lib/i18n';
+
+interface Props { lang: Langue }
+const { lang } = Astro.props;
+const t = (cle: string, v?: Record<string, string | number>) =>
+  traduire(lang, cle, v);
+---
+<Base lang={lang} titre={t('projets.titre')}>
+  <div class="mx-auto max-w-5xl px-6 py-16">
+    <h1 class="titre-section">{t('projets.titre')}</h1>
+    <nav class="mt-6 flex flex-wrap gap-2">
+      {categories.map((c) => (
+        <a href={`#${c.id}`} class="puce hover:bg-accent hover:text-white">
+          {loc(c, 'nom', lang)}
+        </a>
+      ))}
+    </nav>
+    {categories.map((c) => {
+      const liste = projetsDe(c.id);
+      return (
+        <section id={c.id} class="mt-14 scroll-mt-20">
+          <h2 class="text-3xl text-accent">{loc(c, 'nom', lang)}</h2>
+          <p class="mt-1 text-sm text-doux">
+            {loc(c, 'description', lang)}
+            <span class="etiquette ml-2">
+              {t('projets.nombre', { n: liste.length })}
+            </span>
+          </p>
+          <div class="mt-5 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {liste.map((p) => <CarteProjet projet={p} lang={lang} />)}
+          </div>
+        </section>
+      );
+    })}
+  </div>
+</Base>

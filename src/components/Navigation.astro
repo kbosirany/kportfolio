@@ -1,0 +1,47 @@
+---
+import { chemin, sansLangue, traduire, langues, nomsLangues, type Langue }
+  from '../lib/i18n';
+
+interface Props { lang: Langue }
+const { lang } = Astro.props;
+const t = (cle: string) => traduire(lang, cle);
+const page = sansLangue(Astro.url.pathname);
+const liens = [
+  { page: '/', cle: 'nav.accueil' },
+  { page: '/projets/', cle: 'nav.projets' },
+  { page: '/cv/', cle: 'nav.cv' },
+  { page: '/competences/', cle: 'nav.competences' },
+];
+---
+<header class="sticky top-0 z-10 border-b border-ligne bg-white/90
+               backdrop-blur">
+  <nav class="mx-auto flex max-w-5xl flex-wrap items-center justify-between
+              gap-x-6 gap-y-2 px-6 py-3">
+    <a href={chemin(lang, '/')}
+       class="font-titre text-2xl italic text-accent">kbosirany</a>
+    <ul class="flex flex-wrap items-center gap-x-6 gap-y-1 text-sm">
+      {liens.map((l) => (
+        <li>
+          <a href={chemin(lang, l.page)}
+             aria-current={page === l.page ? 'page' : undefined}
+             class:list={['hover:text-accent',
+               page === l.page ? 'text-accent font-normal' : 'text-doux']}>
+            {t(l.cle)}
+          </a>
+        </li>
+      ))}
+    </ul>
+    <ul class="flex gap-1 font-code text-xs" aria-label={t('nav.langue')}>
+      {langues.map((l) => (
+        <li>
+          <a href={chemin(l, page)} hreflang={l} title={nomsLangues[l]}
+             class:list={['rounded-full px-2.5 py-1 uppercase',
+               l === lang ? 'bg-accent text-white'
+                          : 'text-doux hover:bg-accent-clair']}>
+            {l}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </nav>
+</header>
